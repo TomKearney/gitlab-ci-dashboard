@@ -1,4 +1,5 @@
 import fitch from 'fitch'
+import { SKIPPED } from './status'
 
 export const setBaseData = (baseUrl, token, protocol = 'https', apiVersion = '3') => {
   fitch.defaults = {
@@ -49,6 +50,21 @@ export const getPipelines = (projectId) => {
   }
   return fitch.preparedGet(`/projects/${projectId}/pipelines`)
 }
+
+export const getLastNonSkippedPipeline = (projectId, branchName) => {
+  if(!projectId) {
+    return Promise.reject(new Error('projectId is empty'))
+  }
+
+  if(!branchName) {
+    return Promise.reject(new Error('branch name is empty'))
+  }
+
+  return fitch.preparedGet(`/projects/${projectId}/pipelines?ref=${branchName}`)
+    .then(lastNonSkippedPipeline)
+}
+
+const lastNonSkippedPipeline = (pipelinesResult) => pipelinesResult.data.find(p => p.status !== SKIPPED)
 
 export const getPipeline = (projectId, pipelineId) => {
   if (projectId == null || pipelineId == null) {

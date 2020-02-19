@@ -15,15 +15,15 @@
               </h4>
             </a>
             <div class="meta">{{ build.namespace_name }}</div>
-            <div v-if="!isSuccessCard(build)" class="description">
+           <div v-if="!isSuccessCard(build)" class="description">
               {{ build.commit_message }}
             </div>
             <div v-if="!isSuccessCard(build)"><h4>Blame {{ build.author }}</h4></div>
             <div v-if="!isSuccessCard(build) && showVersion(build)" class="ui center floated basic button">
-              <h1 style="font-size: 1.5em">{{ build.tag_name }}</h1>
+              <h1 style="font-size: 1em">{{ build.tag_name }}</h1>
             </div>
             <div v-if="isSuccessCard(build) && showVersion(build)" class="ui center floated basic button">
-              <h1 style="font-size: 2.5em">
+              <h1 style="font-size: 1em">
                 {{ build.tag_name }}
               </h1>
             </div>

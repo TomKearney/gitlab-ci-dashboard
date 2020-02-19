@@ -9,6 +9,7 @@ import gitlabApi, {
   getBuilds,
   getTags,
   getPipeline,
+  getLastNonSkippedPipeline,
   getCommits
 } from '@/gitlab'
 import {
@@ -427,15 +428,13 @@ var root = new Vue({
       getCommits(project.id, repo.branch).then(({data}) => {
         const {
           message,
-          author_name: authorName,
-          last_pipeline: {id: lastPipelineId}
+          author_name: authorName
         } = data
         getTags(project.id)
           .then((response) => {
             const tag = getTopItemByName(response.data)
-            getPipeline(project.id, lastPipelineId)
-              .then((pipeline) => {
-                const lastPipeline = pipeline.data
+            getLastNonSkippedPipeline(project.id, repo.branch)
+              .then((lastPipeline) => {
                 this.onBuilds.forEach((build) => {
                   if (
                     build.project === repo.projectName &&

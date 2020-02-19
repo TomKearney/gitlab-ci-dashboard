@@ -50,6 +50,7 @@
     "json-beautify": "1.0.1",
     "moment": "2.20.1",
     "opn": "5.2.0",
+    "semver-regex": "^3.1.1",
     "semver-sort": "0.0.4",
     "vue": "2.5.13"
   },
@@ -81,7 +82,7 @@
     "file-loader": "1.1.6",
     "friendly-errors-webpack-plugin": "1.6.1",
     "html-webpack-plugin": "2.30.1",
-    "http-server": "0.11.1",
+    "http-server": "^0.12.1",
     "jest": "22.1.4",
     "moxios": "0.4.0",
     "node-notifier": "5.2.1",
@@ -122,6 +123,8 @@
     ],
     "mapCoverage": true,
     "coverageDirectory": "<rootDir>/test/unit/coverage",
+    "verbose": true,
+    "testURL": "http://localhost",
     "collectCoverageFrom": [
       "src/**/*.{js,vue}",
       "!**/node_modules/**"

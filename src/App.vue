@@ -416,6 +416,7 @@ body {
 .project-name {
   color: white !important;
   text-shadow: 1px 1px rgba(0,0,0,0.2);
+  font-size: 1.5em;
 }
 
 .project-name a {

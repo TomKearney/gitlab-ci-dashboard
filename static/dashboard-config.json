@@ -1,0 +1,16 @@
+{
+  "dashboard": {
+    "config": {
+      "gitlab": "_gitlab_url_",
+      "token": "_token_",
+      "gitlabciProtocol": "https",
+      "hideSuccessCards": false,
+      "hideVersion": false,
+      "interval": 15,
+      "apiVersion": 4
+    },
+    "projects": [
+
+    ]
+  }
+}
